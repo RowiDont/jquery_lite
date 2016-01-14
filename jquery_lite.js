@@ -64,5 +64,17 @@
     }
   };
 
+  DOMNodeCollection.prototype.addClass = function (value) {
+    this.collection.forEach( function (el) {
+      el.classList.add(value);
+    });
+  };
+
+  DOMNodeCollection.prototype.removeClass = function (value) {
+    this.collection.forEach( function (el) {
+      el.classList.remove(value);
+    });
+  };
+
 
 })();
