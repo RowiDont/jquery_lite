@@ -94,7 +94,18 @@
   };
 
   DOMNodeCollection.prototype.find = function (selector) {
+    var result = [];
+    this.collection.forEach( function (el) {
+      var nodeList = [].slice.call(el.querySelectorAll(selector));
+      result = result.concat(nodeList);
+    });
+    return new DOMNodeCollection(result);
+  };
 
+  DOMNodeCollection.prototype.remove = function () {
+    this.collection.forEach( function (el) {
+      el.remove();
+    });
   };
 
 })();
