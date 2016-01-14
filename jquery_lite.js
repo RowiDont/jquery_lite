@@ -114,4 +114,10 @@
     });
   };
 
+  DOMNodeCollection.prototype.off = function (event, callback) {
+    this.collection.forEach( function (el) {
+      el.removeEventListener(event, callback);
+    });
+  };
+
 })();
