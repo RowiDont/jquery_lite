@@ -29,5 +29,11 @@
     }
   };
 
-  
+  DOMNodeCollection.prototype.empty = function () {
+    this.collection.forEach( function (el) {
+      el.innerHTML = "";
+    });
+  };
+
+
 })();
