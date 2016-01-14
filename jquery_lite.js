@@ -18,4 +18,16 @@
   var DOMNodeCollection = function (array) {
     this.collection = array;
   };
+
+  DOMNodeCollection.prototype.html = function (string) {
+    if (typeof string === "undefined") {
+      return this.collection[0].innerHTML;
+    } else {
+      this.collection.forEach( function (el) {
+        el.innerHTML = string;
+      });
+    }
+  };
+
+  
 })();
