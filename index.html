@@ -4,8 +4,21 @@
     <meta charset="utf-8">
     <title>Testing jQueryLite</title>
     <script src="./jquery_lite.js"></script>
+    <script>
+      // $l(function(){
+      //   alert(new Date().getMilliseconds());
+      // });
+    </script>
+
   </head>
   <body>
+
+    <script>
+      $l( function () {
+          $l("li").html("hello, I do not exist")
+      })
+    </script>
+
     <h1>Title!</h1>
 
     <div class="test-div">Don't use divs! -Jonathan</div>

@@ -1,14 +1,16 @@
 (function () {
   // All the code!
-  window.$l = function (arg) {
+  window.$l = function (input) {
     var collection;
-    if (arg instanceof HTMLElement) {
-      var argArray = [arg];
+    if (input instanceof Function) {
+      document.addEventListener("DOMContentLoaded", input);
+    } else if (input instanceof HTMLElement) {
+      var argArray = [input];
       collection = new DOMNodeCollection(argArray);
-    } else if (arg instanceof Array) {
-      collection = new DOMNodeCollection(arg);
+    } else if (input instanceof Array) {
+      collection = new DOMNodeCollection(input);
     } else {
-      var nodeList = document.querySelectorAll(arg);
+      var nodeList = document.querySelectorAll(input);
       nodeList = [].slice.call(nodeList);
       collection = new DOMNodeCollection(nodeList);
     }
@@ -118,6 +120,21 @@
     this.collection.forEach( function (el) {
       el.removeEventListener(event, callback);
     });
+  };
+
+  window.$l.extend = function () {
+    var first = arguments[0];
+    var objects = [].slice.call(arguments, 1);
+
+    objects.forEach( function (obj) {
+      // debugger
+      Object.keys(obj).forEach( function (key) {
+        first[key] = obj[key];
+      });
+    });
+
+    return first;
+
   };
 
 })();
