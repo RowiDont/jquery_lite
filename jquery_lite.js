@@ -108,4 +108,10 @@
     });
   };
 
+  DOMNodeCollection.prototype.on = function (event, callback) {
+    this.collection.forEach( function (el) {
+      el.addEventListener(event, callback);
+    });
+  };
+
 })();
