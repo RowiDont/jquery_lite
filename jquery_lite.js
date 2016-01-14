@@ -35,5 +35,22 @@
     });
   };
 
-
+  DOMNodeCollection.prototype.append = function (arg) {
+    var html;
+    // debugger
+    if (typeof arg === "string") {
+      html = [arg];
+    } else if (arg instanceof HTMLElement) {
+      html = [arg.outerHTML];
+    } else {
+      html = arg.collection.map( function (el) {
+        return el.outerHTML;
+      });
+    }
+    this.collection.forEach( function (el) {
+      html.forEach( function (content) {
+        el.innerHTML += content;
+      });
+    });
+  };
 })();
