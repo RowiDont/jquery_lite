@@ -53,4 +53,16 @@
       });
     });
   };
+
+  DOMNodeCollection.prototype.attr = function (key, value) {
+    if (typeof value === "undefined") {
+      return this.collection[0].getAttribute(key);
+    } else {
+      this.collection.forEach( function (el) {
+        el.setAttribute(key, value);
+      });
+    }
+  };
+
+
 })();
