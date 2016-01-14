@@ -134,7 +134,12 @@
     });
 
     return first;
-
   };
+
+  window.$l.ajax = function (input) {
+    
+  }
+
+
 
 })();
