@@ -76,5 +76,25 @@
     });
   };
 
+  DOMNodeCollection.prototype.children = function () {
+    var result = [];
+    this.collection.forEach( function (el) {
+      var children = [].slice.call(el.children);
+      result = result.concat(children);
+    });
+    return new DOMNodeCollection(result);
+  };
+
+  DOMNodeCollection.prototype.parent = function () {
+    var result = [];
+    this.collection.forEach( function (el) {
+      result.push(el.parentElement);
+    });
+    return new DOMNodeCollection(result);
+  };
+
+  DOMNodeCollection.prototype.find = function (selector) {
+
+  };
 
 })();
